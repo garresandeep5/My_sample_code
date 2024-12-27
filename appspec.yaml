@@ -7,20 +7,20 @@ Resources:
         LoadBalancerInfo:
           ContainerName: "my-cont"
           ContainerPort: 8080
-Hooks:
+hooks:
   BeforeInstall:
-    - Location: scripts/validate.sh
-      Timeout: 300
-      RunAs: root
+    - location: scripts/validate.sh
+      timeout: 300
+      runas: root
   AfterInstall:
-    - Location: scripts/setup.sh
-      Timeout: 300
-      RunAs: root
+    - location: scripts/setup.sh
+      timeout: 300
+      runas: root
   ApplicationStart:
-    - Location: scripts/start.sh
-      Timeout: 300
-      RunAs: root
+    - location: scripts/start.sh
+      timeout: 300
+      runas: root
   ValidateService:
-    - Location: scripts/healthcheck.sh
-      Timeout: 300
-      RunAs: root
+    - location: scripts/healthcheck.sh
+      timeout: 300
+      runas: root
