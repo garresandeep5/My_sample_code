@@ -1,0 +1,26 @@
+version: 0.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:ap-south-1:266735821233:task-definition/my-td:1"
+        LoadBalancerInfo:
+          ContainerName: "my-cont"
+          ContainerPort: 8080
+Hooks:
+  BeforeInstall:
+    - Location: scripts/validate.sh
+      Timeout: 300
+      RunAs: root
+  AfterInstall:
+    - Location: scripts/setup.sh
+      Timeout: 300
+      RunAs: root
+  ApplicationStart:
+    - Location: scripts/start.sh
+      Timeout: 300
+      RunAs: root
+  ValidateService:
+    - Location: scripts/healthcheck.sh
+      Timeout: 300
+      RunAs: root
