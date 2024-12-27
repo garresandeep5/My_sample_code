@@ -1,9 +1,9 @@
 version: 0.0
 Resources:
-  TargetService:
-    Type: AWS::ECS::Service
-    Properties:
-      TaskDefinition: "arn:aws:ecs:ap-south-1:266735821233:task-definition/my-td:1"
-      LoadBalancerInfo:
-        ContainerName: "my-cont"
-        ContainerPort: 8080
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:ap-south-1:266735821233:task-definition/my-td:1"
+        LoadBalancerInfo:
+          ContainerName: "my-cont"
+          ContainerPort: 8080
