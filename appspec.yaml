@@ -1,5 +1,5 @@
 version: 0.0
-Resources:
+resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
@@ -7,3 +7,23 @@ Resources:
         LoadBalancerInfo:
           ContainerName: "my-cont"
           ContainerPort: 8080
+          [
+  {
+    "containerDefinitions": [
+      {
+        "name": "my-ecs-app",
+        "image": "266735821233.dkr.ecr.ap-south-1.amazonaws.com/myrepo",
+        "memory": 512,
+        "cpu": 256,
+        "essential": true,
+        "portMappings": [
+          {
+            "containerPort": 8080,
+            "hostPort": 8080
+          }
+        ]
+      }
+    ],
+    "family": "my-ecs-app"
+  }
+]
