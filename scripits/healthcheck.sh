@@ -2,7 +2,7 @@
 
 set -e
 
-SERVICE_NAME="poc_service"
+SERVICE_NAME="service_poc"
 CLUSTER_NAME="poc_cluster"
 
 echo "Starting health check for service: $SERVICE_NAME in cluster: $CLUSTER_NAME..."
