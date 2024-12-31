@@ -1,11 +1,15 @@
 #!/bin/bash
-echo "Performing health check..."
-# Example: Check HTTP response from the application
-HEALTH_CHECK_URL="http://my-application-url/health"
-RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" $HEALTH_CHECK_URL)
-if [ "$RESPONSE" -ne 200 ]; then
-  echo "Health check failed with response code $RESPONSE."
-  exit 1
-fi
-echo "Health check passed."
-exit 0
+
+set -e
+
+SERVICE_NAME="poc_service"
+CLUSTER_NAME="poc_cluster"
+
+echo "Starting health check for service: $SERVICE_NAME in cluster: $CLUSTER_NAME..."
+
+# Wait for the service to stabilize
+aws ecs wait services-stable \
+    --cluster $CLUSTER_NAME \
+    --services $SERVICE_NAME
+
+echo "Health check passed. The service is stable."
