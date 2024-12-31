@@ -3,10 +3,10 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: "arn:aws:ecs:ap-south-1:266735821233:task-definition/poc_td:1"
+        TaskDefinition: "arn:aws:ecs:ap-south-1:266735821233:task-definition/poc_td:1"  # Ensure this ARN is correct
         LoadBalancerInfo:
-          ContainerName: "poc_cont"
-          ContainerPort: 8080
+          ContainerName: "poc_cont"  # Ensure this matches your ECS container name
+          ContainerPort: 8080        # Ensure this matches your ECS container port
 Hooks:
   - BeforeInstall:
       - location: scripts/validate_environment.sh
