@@ -3,7 +3,24 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: "arn:aws:ecs:ap-south-1:266735821233:task-definition/my-td:1"
+        TaskDefinition: "arn:aws:ecs:ap-south-1:266735821233:task-definition/poc_td:1"
         LoadBalancerInfo:
-          ContainerName: "my-cont"
+          ContainerName: "poc_cont"
           ContainerPort: 8080
+Hooks:
+  - BeforeInstall:
+      - location: scripts/validate_environment.sh
+        timeout: 300
+        runas: root
+  - AfterInstall:
+      - location: scripts/health_check.sh
+        timeout: 300
+        runas: root
+  - BeforeAllowTraffic:
+      - location: scripts/check_canary_health.sh
+        timeout: 300
+        runas: root
+  - AfterAllowTraffic:
+      - location: scripts/cleanup.sh
+        timeout: 300
+        runas: root
