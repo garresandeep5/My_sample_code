@@ -2,7 +2,7 @@
 
 set -e
 
-CANARY_URL="http://canary.example.com/health" # Replace with your canary health endpoint
+CANARY_URL="mypoclb-523229169.ap-south-1.elb.amazonaws.com" # Replace with your canary health endpoint
 
 echo "Checking health of the canary deployment..."
 
