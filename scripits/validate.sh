@@ -1,9 +1,12 @@
 #!/bin/bash
+
+set -e
+
 echo "Validating environment..."
-# Example: Check if environment variables are set
-if [ -z "$ENV_VAR_NAME" ]; then
-  echo "Error: ENV_VAR_NAME is not set."
-  exit 1
+# Example checks
+if ! command -v docker &> /dev/null; then
+    echo "Docker is not installed. Exiting."
+    exit 1
 fi
-echo "Environment validation passed."
-exit 0
+
+echo "Environment validation complete."
