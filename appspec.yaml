@@ -8,19 +8,5 @@ Resources:
           ContainerName: "poc_cont"  # Ensure this matches your ECS container name
           ContainerPort: 8080        # Ensure this matches your ECS container port
 Hooks:
-  - BeforeInstall:
-      - location: scripts/validate_environment.sh
-        timeout: 300
-        runas: root
-  - AfterInstall:
-      - location: scripts/health_check.sh
-        timeout: 300
-        runas: root
-  - BeforeAllowTraffic:
-      - location: scripts/check_canary_health.sh
-        timeout: 300
-        runas: root
-  - AfterAllowTraffic:
-      - location: scripts/cleanup.sh
-        timeout: 300
-        runas: root
+  - BeforeInstall: "arn:aws:lambda:ap-south-1:266735821233:function:Before-install"
+  - AfterInstall: "arn:aws:lambda:ap-south-1:266735821233:function:After-Install"
