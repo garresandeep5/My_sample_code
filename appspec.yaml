@@ -7,9 +7,3 @@ Resources:
         LoadBalancerInfo:
           ContainerName: "poc_cont"  # Ensure this matches your ECS container name
           ContainerPort: 8080        # Ensure this matches your ECS container port
-Hooks:
-  - BeforeInstall: "arn:aws:lambda:ap-south-1:266735821233:function:Before-install"
-  - AfterInstall: "arn:aws:lambda:ap-south-1:266735821233:function:After-install"
-  - AfterAllowTestTraffic: "arn:aws:lambda:ap-south-1:266735821233:function:After_allow_test_traffic"
-  - BeforeAllowTraffic: "arn:aws:lambda:ap-south-1:266735821233:function:Before_allow_traffic"
-  - AfterAllowTraffic: "arn:aws:lambda:ap-south-1:266735821233:function:After_allow_traffic"
