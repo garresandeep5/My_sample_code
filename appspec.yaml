@@ -5,7 +5,7 @@ Resources:
       Properties:
         TaskDefinition: "arn:aws:ecs:ap-south-1:266735821233:task-definition/my-poc-td:1"
         LoadBalancerInfo:
-          ContainerName: "poc_cont"
+          ContainerName: "my-cont"
           ContainerPort: 8080
 Hooks:
   - BeforeInstall: "arn:aws:lambda:ap-south-1:266735821233:function:Before-install"
